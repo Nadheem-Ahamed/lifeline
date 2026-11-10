@@ -1,0 +1,131 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LifeLink | Blood Donor Management</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;color:#263244;background:#fff;line-height:1.6}
+header{background:#fff;padding:18px 8%;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 10px #ddd;position:sticky;top:0}
+.logo{font-size:25px;font-weight:bold;color:#c51f35}
+nav a{margin-left:22px;text-decoration:none;color:#333;font-size:14px}
+.hero{background:#fff0f1;padding:85px 8%;text-align:center}
+.hero h1{font-size:42px;color:#a9162c;margin-bottom:15px}
+.hero p{max-width:650px;margin:0 auto 25px;color:#555}
+.btn{display:inline-block;background:#c51f35;color:white;padding:12px 25px;border-radius:6px;text-decoration:none;border:0;cursor:pointer}
+section{padding:55px 8%;text-align:center}
+h2{font-size:29px;margin-bottom:25px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:20px;margin-top:25px}
+.card{padding:25px;border:1px solid #eee;border-radius:10px;background:white}
+.card h3{color:#bd1f35;margin-bottom:10px}
+form{max-width:500px;margin:auto;text-align:left}
+input,select{width:100%;padding:12px;margin:8px 0 16px;border:1px solid #ccc;border-radius:5px}
+label{font-weight:bold}
+.result{margin-top:20px;color:#187443}
+footer{background:#252b35;color:white;padding:25px;text-align:center}
+.small{font-size:13px;color:#777}
+@media(max-width:650px){header{flex-direction:column;gap:10px}nav a{margin:5px;font-size:12px}.hero h1{font-size:32px}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">✚ LifeLink</div>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#features">Features</a>
+    <a href="#donors">Find Donors</a>
+    <a href="#request">Request Blood</a>
+  </nav>
+</header>
+
+<div class="hero" id="home">
+  <h1>Donate Blood, Save Lives</h1>
+  <p>LifeLink connects blood donors with people who need blood.
+  A small act of kindness can make a big difference.</p>
+  <a class="btn" href="#donors">Find Blood Donors</a>
+</div>
+
+<section id="about">
+  <h2>About LifeLink</h2>
+  <p>LifeLink is an Online Blood Donor Management System
+  designed to make finding blood donors easier and faster.</p>
+</section>
+
+<section id="features">
+  <h2>Our Features</h2>
+  <div class="cards">
+    <div class="card"><h3>Donor Registration</h3><p>Donors can register their basic details.</p></div>
+    <div class="card"><h3>Find Donors</h3><p>Search donors using blood group and city.</p></div>
+    <div class="card"><h3>Blood Requests</h3><p>Submit blood requests when needed.</p></div>
+    <div class="card"><h3>Admin Management</h3><p>Administrators can manage donor records and requests.</p></div>
+  </div>
+</section>
+
+<section id="donors">
+  <h2>Find Blood Donors</h2>
+  <form id="searchForm">
+    <label>Blood Group</label>
+    <select id="blood">
+      <option value="">Select Blood Group</option>
+      <option>A+</option><option>A-</option>
+      <option>B+</option><option>B-</option>
+      <option>AB+</option><option>AB-</option>
+      <option>O+</option><option>O-</option>
+    </select>
+    <label>City</label>
+    <input id="city" placeholder="Enter city">
+    <button class="btn" type="submit">Search Donors</button>
+    <p class="result" id="searchResult"></p>
+  </form>
+  <p class="small">Demonstration page. Live donor search requires the PHP/MySQL application.</p>
+</section>
+
+<section id="request">
+  <h2>Request Blood</h2>
+  <form id="requestForm">
+    <label>Patient Name</label>
+    <input required placeholder="Enter patient name">
+    <label>Blood Group</label>
+    <select required>
+      <option value="">Select Blood Group</option>
+      <option>A+</option><option>A-</option>
+      <option>B+</option><option>B-</option>
+      <option>AB+</option><option>AB-</option>
+      <option>O+</option><option>O-</option>
+    </select>
+    <label>Hospital Name</label>
+    <input required placeholder="Enter hospital name">
+    <label>City</label>
+    <input required placeholder="Enter city">
+    <button class="btn" type="submit">Submit Demo Request</button>
+  </form>
+  <p class="small">Demo form only. It does not submit data to the database.</p>
+</section>
+
+<footer>
+  <h3>✚ LifeLink</h3>
+  <p>Online Blood Donor Management System</p>
+  <p class="small">Educational prototype. Donor availability is self-reported and not medically verified. Not an emergency service.</p>
+</footer>
+
+<script>
+document.getElementById("searchForm").addEventListener("submit",function(e){
+  e.preventDefault();
+  const blood=document.getElementById("blood").value;
+  const city=document.getElementById("city").value.trim();
+  document.getElementById("searchResult").textContent=
+    blood && city ? "Demo search selected: "+blood+" donors in "+city+". Live search is available in the XAMPP application." : "Please select a blood group and enter a city.";
+});
+document.getElementById("requestForm").addEventListener("submit",function(e){
+  e.preventDefault();
+  alert("Demo request submitted successfully. This is not saved to the database.");
+  this.reset();
+});
+</script>
+
+</body>
+</html>
